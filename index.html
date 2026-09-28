@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TV Playout Automation V5</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div><div class="brand">TV PLAYOUT <span>AUTOMATION</span></div><div class="sub">Integrated MCR • Multi Channel • Scheduler • Graphics • Backup • V5</div></div>
+  <div class="topright"><b id="clock">00:00:00</b><span class="onair">● ON AIR</span></div>
+</header>
+<nav id="channels" class="channels"></nav>
+
+<main>
+<section class="dashboard">
+ <div class="panel">
+  <div class="head"><b>PROGRAM OUT</b><span id="outLabel">CH 1</span></div>
+  <div class="screen">
+   <video id="player" controls playsinline></video>
+   <div id="logoBug" class="logo">CHANNEL 1</div>
+   <div id="lowerThird" class="lowerthird"></div>
+   <div id="breaking" class="breaking"></div>
+  </div>
+  <div class="now">
+   <div><label>NOW PLAYING</label><strong id="now">—</strong></div>
+   <div><label>REMAINING</label><strong id="remain">00:00:00</strong></div>
+   <div><label>NEXT</label><strong id="next">—</strong></div>
+  </div>
+ </div>
+ <div class="panel">
+  <div class="head"><b>PREVIEW / CONTROL</b><span id="previewState">READY</span></div>
+  <video id="preview" muted playsinline></video>
+  <div class="pinfo"><b id="previewTitle">—</b><span id="previewPath">—</span></div>
+  <div class="controls">
+   <button id="take" class="blue">TAKE → PROGRAM</button><button id="play">▶ PLAY</button>
+   <button id="pause">⏸ PAUSE</button><button id="stop">■ STOP</button><button id="nextBtn">⏭ NEXT</button>
+   <button id="emergency" class="red">EMERGENCY</button>
+  </div>
+  <div class="health">
+   <div><span>PRIMARY</span><b id="primary">● READY</b></div>
+   <div><span>BACKUP</span><b id="backup">● READY</b></div>
+  </div>
+  <button id="switchBackup" class="wide">SWITCH TO BACKUP</button>
+ </div>
+</section>
+
+<section class="panel">
+ <div class="head"><b>24 HOUR AUTOMATION TIMELINE</b><span id="timelineInfo">0 EVENTS</span></div>
+ <div class="hours"><span>00</span><span>03</span><span>06</span><span>09</span><span>12</span><span>15</span><span>18</span><span>21</span><span>24</span></div>
+ <div id="timeline" class="timeline"></div>
+ <div class="addrow">
+  <input id="src" placeholder="videos/program1.mp4">
+  <input id="title" placeholder="Program / Commercial title">
+  <input id="time" type="time">
+  <input id="dur" placeholder="Duration" value="00:30:00">
+  <select id="type"><option>PROGRAM</option><option>COMMERCIAL</option><option>PROMO</option><option>NEWS</option><option>LIVE</option><option>FILLER</option></select>
+  <button id="add" class="blue">＋ ADD EVENT</button>
+ </div>
+</section>
+
+<section class="grid3">
+ <div class="panel">
+  <div class="head"><b>SCHEDULE</b><button id="clearTimes">CLEAR TIMES</button></div>
+  <div id="schedule"></div>
+ </div>
+ <div class="panel">
+  <div class="head"><b>GRAPHICS</b></div>
+  <div class="settings">
+   <label>Channel Logo <input id="logo" type="checkbox" checked></label>
+   <label>Lower Third <input id="lower" type="checkbox"></label>
+   <label>Breaking News <input id="breakingToggle" type="checkbox"></label>
+   <label>Ticker <input id="ticker" type="checkbox"></label>
+  </div>
+  <div class="graphic">
+   <input id="lowerText" placeholder="Lower Third text"><button id="applyLower">APPLY</button>
+   <input id="breakingText" placeholder="Breaking News text"><button id="applyBreaking">ON AIR</button>
+   <input id="tickerText" placeholder="Ticker text"><button id="applyTicker">SET</button>
+  </div>
+ </div>
+ <div class="panel">
+  <div class="head"><b>AUTOMATION / SYSTEM</b></div>
+  <div class="settings">
+   <label>Auto Next <input id="auto" type="checkbox" checked></label>
+   <label>Auto Schedule <input id="autoschedule" type="checkbox"></label>
+   <label>Loop Playlist <input id="loop" type="checkbox"></label>
+   <label>24/7 Mode <input id="mode247" type="checkbox"></label>
+   <label>Backup Armed <input id="backupArmed" type="checkbox" checked></label>
+  </div>
+  <div class="healthbox">
+   <div>MEDIA <b id="mediaStatus">● READY</b></div>
+   <div>SCHEDULER <b id="schedulerStatus">● READY</b></div>
+   <div>PLAYOUT <b id="playoutStatus">● READY</b></div>
+  </div>
+ </div>
+</section>
+
+<section class="panel">
+ <div class="head"><b>EVENT LOG</b><button id="clearLog">CLEAR LOG</button></div>
+ <div id="log" class="log"></div>
+</section>
+
+<div id="toast"></div>
+</main>
+<footer>TV Playout Automation V5 • Integrated browser prototype • GitHub MP4</footer>
+<script src="app.js"></script>
+</body>
+</html>
