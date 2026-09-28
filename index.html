@@ -1,9 +1,52 @@
-<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TV Playout V5 Fixed</title><link rel="stylesheet" href="./style.css"></head><body>
-<header><b>TV PLAYOUT AUTOMATION <span>V5 FIXED</span></b><small>GitHub MP4 • Multi Channel</small><strong id="clock">00:00:00</strong></header>
-<nav id="channels"></nav><main>
-<section class="grid"><div class="card"><h3>PROGRAM OUT <span id="state">READY</span></h3><div class="screen"><video id="player" controls playsinline preload="metadata"></video><b id="bug">CH 1</b></div><div class="stats"><div>NOW<strong id="now">—</strong></div><div>REMAINING<strong id="remain">00:00:00</strong></div><div>NEXT<strong id="next">—</strong></div></div></div>
-<div class="card"><h3>PREVIEW</h3><video id="preview" muted playsinline preload="metadata"></video><p id="previewTitle">—</p><div class="buttons"><button id="take">TAKE → PROGRAM</button><button id="play">PLAY</button><button id="pause">PAUSE</button><button id="stop">STOP</button><button id="nextBtn">NEXT</button></div></div></section>
-<section class="card"><h3>VIDEO FILES</h3><div class="upload"><input id="picker" type="file" accept="video/*" multiple><button id="upload">ADD SELECTED FILES</button></div><p class="hint">Repository MP4 के लिए exact path डालें, जैसे <code>videos/news.mp4</code>।</p></section>
-<section class="card"><h3>PLAYLIST <span id="count">0 EVENTS</span></h3><div id="playlist"></div><div class="add"><input id="src" placeholder="videos/program1.mp4"><input id="title" placeholder="Title"><input id="time" type="time"><input id="dur" value="00:30:00"><select id="type"><option>PROGRAM</option><option>COMMERCIAL</option><option>PROMO</option><option>NEWS</option><option>LIVE</option><option>FILLER</option></select><button id="add">ADD</button></div></section>
-<section class="card"><h3>AUTOMATION</h3><label>Auto Next <input id="auto" type="checkbox" checked></label><label>Loop <input id="loop" type="checkbox"></label><label>Auto Schedule <input id="schedule" type="checkbox"></label></section>
-<section class="card"><h3>EVENT LOG</h3><pre id="log"></pre></section></main><script src="./app.js"></script></body></html>
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TV Playout Automation V5 - Auto MP4</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header>
+  <div><b>TV PLAYOUT AUTOMATION <span>V5 AUTO MP4</span></b><small>GitHub Videos → Automatic Playlist</small></div>
+  <strong id="clock">00:00:00</strong>
+</header>
+<nav id="channels"></nav>
+<main>
+<section class="top">
+<div class="card">
+<h3>PROGRAM OUT <span id="state">READY</span></h3>
+<div class="screen"><video id="program" controls playsinline preload="metadata"></video><b id="chbug">CH 1</b></div>
+<div class="stats"><div>NOW<strong id="now">—</strong></div><div>REMAINING<strong id="remain">00:00:00</strong></div><div>NEXT<strong id="next">—</strong></div></div>
+</div>
+<div class="card">
+<h3>PREVIEW</h3>
+<video id="preview" muted playsinline controls preload="metadata"></video>
+<div id="previewTitle" class="title">—</div>
+<div class="buttons"><button id="take">TAKE</button><button id="play">PLAY</button><button id="pause">PAUSE</button><button id="stop">STOP</button><button id="nextBtn">NEXT</button></div>
+</div>
+</section>
+
+<section class="card">
+<h3>GITHUB VIDEOS <span id="scanStatus">SCANNING...</span></h3>
+<div class="toolbar"><button id="scan">SCAN / REFRESH VIDEOS</button><span id="repoInfo"></span></div>
+<div id="playlist"></div>
+</section>
+
+<section class="grid3">
+<div class="card controls"><h3>AUTOMATION</h3>
+<label>Auto Next <input id="auto" type="checkbox" checked></label>
+<label>Loop Playlist <input id="loop" type="checkbox"></label>
+<label>Auto Schedule <input id="schedule" type="checkbox"></label>
+</div>
+<div class="card"><h3>ADD MANUAL PATH</h3>
+<input id="src" placeholder="videos/GaneshMahaAarti.mp4">
+<button id="add">ADD TO PLAYLIST</button>
+<p class="hint">GitHub repository path डालें।</p>
+</div>
+<div class="card"><h3>EVENT LOG</h3><pre id="log"></pre></div>
+</section>
+</main>
+<script src="./app.js"></script>
+</body>
+</html>

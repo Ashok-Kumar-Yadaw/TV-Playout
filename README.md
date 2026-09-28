@@ -1,20 +1,27 @@
-# TV Playout Automation V5 FIXED
+# TV Playout V5 AUTO MP4 FIXED
 
-पुराने V5 में MP4 path resolution की समस्या थी। इस version में:
-- GitHub Pages के current folder से relative MP4 URL resolve होता है
-- `videos/news.mp4` जैसे paths सही तरह load होते हैं
-- playlist default में गलत/example files नहीं चलतीं
-- local PC से MP4 select करके temporary browser playback भी संभव है
-- media error log में दिखाई देता है
+यह version GitHub Pages पर `videos` folder को GitHub Contents API से scan करता है और सभी `.mp4` files को playlist में automatically दिखाता है।
 
-GitHub structure:
-repository/
-  index.html
-  style.css
-  app.js
-  videos/
-    news.mp4
+Repository:
+https://github.com/Ashok-Kumar-Yadaw/TV-Playout
 
-GitHub Pages: Settings → Pages → Deploy from branch → main → root.
+Live:
+https://ashok-kumar-yadaw.github.io/TV-Playout/
 
-यदि MP4 का नाम `My News.mp4` है तो exact path `videos/My News.mp4` डालें।
+Current files जैसे:
+- AartiKunjBihariKi.mp4
+- AshutoshShashankShekhar.mp4
+- GaneshMahaAarti.mp4
+- NamamiShamishan.mp4
+
+इनका filename manually डालने की जरूरत नहीं है।
+
+## GitHub पर install
+इस ZIP से `index.html`, `style.css`, `app.js` को repository के root में replace करें। `videos/` folder को न हटाएँ।
+
+GitHub Pages में `main` + `/(root)` रखें।
+
+## क्यों यह तरीका
+GitHub Pages static hosting directory listing नहीं देता। इसलिए browser सीधे `videos/` folder को scan नहीं कर सकता। यह version GitHub Contents API से MP4 list लेता है और फिर Pages URL से actual MP4 चलाता है।
+
+यदि किसी MP4 पर GitHub Pages direct URL 404 देता है, तो वह file deployment में उपलब्ध नहीं है या filename/path अलग है।
