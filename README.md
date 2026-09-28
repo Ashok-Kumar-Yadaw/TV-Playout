@@ -1,41 +1,20 @@
-# TV Playout Automation V5
+# TV Playout Automation V5 FIXED
 
-यह V1–V4 की सुविधाओं को एक integrated browser MCR prototype में जोड़ता है।
+पुराने V5 में MP4 path resolution की समस्या थी। इस version में:
+- GitHub Pages के current folder से relative MP4 URL resolve होता है
+- `videos/news.mp4` जैसे paths सही तरह load होते हैं
+- playlist default में गलत/example files नहीं चलतीं
+- local PC से MP4 select करके temporary browser playback भी संभव है
+- media error log में दिखाई देता है
 
-## शामिल सुविधाएँ
-- 4 channels
-- Program Out + Preview
-- TAKE workflow
-- Play / Pause / Stop / Next
-- Emergency Stop
-- Current / Next / Remaining
-- 24-hour style timeline
-- Scheduled time + duration
-- Program / Commercial / Promo / News / Live / Filler
-- Auto Next
-- Auto Schedule
-- Loop
-- 24/7 mode
-- Primary / Backup status
-- Backup armed + manual switch
-- Channel logo
-- Lower Third
-- Breaking News
-- Ticker controls
-- Schedule view
-- Event log
-- localStorage persistence
-- GitHub Pages compatible
-- MP4 files from repository `videos/` folder
+GitHub structure:
+repository/
+  index.html
+  style.css
+  app.js
+  videos/
+    news.mp4
 
-## GitHub
-इन files को repository में upload करें और Settings → Pages → Deploy from branch → main → root चुनें।
+GitHub Pages: Settings → Pages → Deploy from branch → main → root.
 
-उदाहरण:
-videos/program1.mp4
-videos/commercial.mp4
-videos/news.mp4
-videos/promo.mp4
-
-## जरूरी सीमा
-यह browser/GitHub Pages prototype है। GitHub Pages स्वयं professional 24×7 broadcast playout engine नहीं है। SDI/HDMI, frame-accurate switching, SRT/RTMP, hardware redundancy और reliable server-side scheduling के लिए dedicated Windows/Linux playout server और media engine चाहिए।
+यदि MP4 का नाम `My News.mp4` है तो exact path `videos/My News.mp4` डालें।
